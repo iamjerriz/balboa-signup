@@ -1,0 +1,29 @@
+/* left section */
+.left-section {
+    width: 100%;
+    padding: 30px;
+    align-items: center;
+}
+
+.left-inner-box {
+    width: 100%;
+}
+
+.left-header-text {
+    text-align: left;
+    font-size: 65px;
+    font-weight: bolder;
+    margin-bottom: 15px;
+}
+
+.left-description-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 24px; 
+}
+  
+/* right section */
+.right-section {
+    width: 100%;
+}
