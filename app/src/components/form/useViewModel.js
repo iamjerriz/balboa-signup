@@ -20,15 +20,11 @@ const useViewModel = () => {
   });
 
   //Clear Errors
-  const handleClearErrors = () => {
-    const newErrors = {
-      firstNameError: false,
-      lastNameError: false,
-      emailError: false,
-      emailInvalid: false,
-      passwordError: false,
-    };
-    setErrors(newErrors);
+  const handleClearErrors = (name) => {
+    if (name === "emailError") {
+      setErrors((s) => ({ ...s, emailInvalid: false }));
+    }
+    setErrors((s) => ({ ...s, [name]: false }));
   };
 
   //Handle Input Change
@@ -44,38 +40,16 @@ const useViewModel = () => {
 
   // Validate Data
   const validateForm = () => {
-    let isValid = true;
     const { firstName, lastName, email, password } = formData;
     const newErrors = {
-      firstNameError: false,
-      lastNameError: false,
-      emailError: false,
-      emailInvalid: false,
-      passwordError: false,
+      firstNameError: firstName.trim() === "",
+      lastNameError: lastName.trim() === "",
+      emailError: email.trim() === "",
+      emailInvalid: !/\S+@\S+\.\S+/.test(email),
+      passwordError: password.trim() === "",
     };
 
-    if (firstName.trim() === "") {
-      newErrors.firstNameError = true;
-      isValid = false;
-    }
-
-    if (lastName.trim() === "") {
-      newErrors.lastNameError = true;
-      isValid = false;
-    }
-
-    if (email.trim() === "") {
-      newErrors.emailError = true;
-      isValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.emailInvalid = true;
-      isValid = false;
-    }
-
-    if (password.trim() === "") {
-      newErrors.passwordError = true;
-      isValid = false;
-    }
+    const isValid = Object.values(newErrors).every((error) => !error);
 
     setErrors(newErrors);
     return isValid;

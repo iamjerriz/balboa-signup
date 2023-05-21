@@ -6,88 +6,70 @@ import useViewModel from "./useViewModel";
 import CustomButton from "../buttons";
 import errorIcon from "../../assets/images/icon-error.svg";
 import "../../assets/styles/form.css";
+import { useStyles } from "./useStyles";
 
 const SignupForm = () => {
   const model = useViewModel();
+  const styles = useStyles();
 
-  const buttonStyle1 = {
-    width: "100%",
-    background: "#38CC8C",
-    margin: "20px 0",
-    padding: "15px 0",
-    "&:hover": {
-      background: "#38CC8C",
-    },
+  const ErrorIcon = ({ name }) => {
+    const values = model?.errors[name];
+    if (!values) return null;
+
+    return (
+      <InputAdornment position="start" id={name}>
+        <img alt="error" src={errorIcon} />
+      </InputAdornment>
+    );
   };
 
   return (
     <>
       <FormGroup>
         <TextField
-          id="outlined-basic"
+          id="form-firstname"
           className="form-textfield"
           label={model?.errors.firstNameError ? "" : "First Name"}
-          variant="outlined"
           margin="normal"
           name="firstName"
-          onClick={model?.handleClearErrors}
+          onClick={() => model?.handleClearErrors("firstNameError")}
           error={model?.errors.firstNameError}
           helperText={
             model?.errors.firstNameError ? "First name cannot be empty." : ""
           }
           onChange={model?.handleInputChange}
           InputProps={{
-            style: {
-              fontSize: "16px",
-              fontFamily: "poppins-regular",
-            },
-            endAdornment: (
-              <InputAdornment position="start">
-                {model?.errors.firstNameError && (
-                  <img alt="error" src={errorIcon} />
-                )}
-              </InputAdornment>
-            ),
+            style: styles.inputStyle,
+            endAdornment: <ErrorIcon name="firstNameError" />,
           }}
         />
 
         <TextField
-          id="outlined-basic"
+          id="form-lastname"
           label={model?.errors.lastNameError ? "" : "Last Name"}
-          variant="outlined"
           margin="normal"
           name="lastName"
-          onClick={model?.handleClearErrors}
+          onClick={() => model?.handleClearErrors("lastNameError")}
           error={model?.errors.lastNameError}
           helperText={
             model?.errors.lastNameError ? "Last name cannot be empty." : ""
           }
           onChange={model?.handleInputChange}
           InputProps={{
-            style: {
-              fontSize: "16px",
-              fontFamily: "poppins-regular",
-            },
-            endAdornment: (
-              <InputAdornment position="start">
-                {model?.errors.emailError && (
-                  <img alt="error" src={errorIcon} />
-                )}
-              </InputAdornment>
-            ),
+            style: styles.inputStyle,
+            endAdornment: <ErrorIcon name="lastName" />,
           }}
         />
         <TextField
-          id="outlined-basic"
+          id="form-email"
           label={
             model?.errors.emailError || model?.errors.emailInvalid
               ? ""
               : "Email Address"
           }
-          variant="outlined"
           margin="normal"
           name="email"
-          onClick={model?.handleClearErrors}
+          onClick={() => model?.handleClearErrors("emailError")}
           error={model?.errors.emailError || model?.errors.emailInvalid}
           helperText={
             model?.errors.emailError
@@ -98,50 +80,32 @@ const SignupForm = () => {
           }
           onChange={model?.handleInputChange}
           InputProps={{
-            style: {
-              fontSize: "16px",
-              fontFamily: "poppins-regular",
-            },
-            endAdornment: (
-              <InputAdornment position="start">
-                {model?.errors.emailError && (
-                  <img alt="error" src={errorIcon} />
-                )}
-              </InputAdornment>
-            ),
+            style: styles.inputStyle,
+            endAdornment: <ErrorIcon name="emailError" />,
           }}
         />
         <TextField
-          id="outlined-basic"
+          id="form-password"
           label={model?.errors.passwordError ? "" : "Password"}
-          variant="outlined"
           margin="normal"
           name="password"
-          onClick={model?.handleClearErrors}
+          onClick={() => model?.handleClearErrors("passwordError")}
           error={model?.errors.passwordError}
           helperText={
             model?.errors.passwordError ? "Password cannot be empty." : ""
           }
           onChange={model?.handleInputChange}
           InputProps={{
-            style: {
-              fontSize: "16px",
-              fontFamily: "poppins-regular",
-            },
-            endAdornment: (
-              <InputAdornment position="start">
-                {model?.errors.passwordError && (
-                  <img alt="error" src={errorIcon} />
-                )}
-              </InputAdornment>
-            ),
+            style: styles.inputStyle,
+            endAdornment: <ErrorIcon name="passwordError" />,
           }}
         />
       </FormGroup>
       <CustomButton
         title={<p>CLAIM YOUR FREE TRIAL</p>}
+        id="form-button"
         btnFunction={() => model?.handleSubmit()}
-        style={buttonStyle1}
+        style={styles.buttonStyle}
       />
     </>
   );

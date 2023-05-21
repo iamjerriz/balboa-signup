@@ -1,21 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import SignupForm from "../../components/form";
 import CustomButton from "../../components/buttons";
 import "../../assets/styles/homepage.css";
+import { useStyles } from "./useStyles";
+import SignupForm from "../../components/form";
 
 const Homepage = () => {
-  const buttonStyle2 = {
-    width: "100%",
-    background: "#5d54a3",
-    marginBottom: "30px",
-    padding: "15px 0",
-    boxShadow: "0px 10px 6px rgba(0, 0, 0, 0.2)",
-    "&:hover": {
-      background: "#5d54a3",
-      boxShadow: "0px 10px 6px rgba(0, 0, 0, 0.2)",
-    },
-  };
+  const styles = useStyles();
 
   return (
     <React.Fragment>
@@ -42,8 +33,9 @@ const Homepage = () => {
               Try it free 7 days<span> then $20/mo. thereafter</span>
             </p>
           }
+          id={"ads-button"}
           buttonFunction={console.log("customButton")}
-          style={buttonStyle2}
+          style={styles.buttonStyle}
         />
 
         <div className="right-inner-box">
