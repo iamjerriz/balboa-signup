@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { Button } from "@mui/material";
 import "../../assets/styles/customButton.css";

@@ -15,6 +15,9 @@ const SignupForm = () => {
     background: "#38CC8C",
     margin: "20px 0",
     padding: "15px 0",
+    "&:hover": {
+      background: "#38CC8C",
+    },
   };
 
   return (
@@ -23,7 +26,7 @@ const SignupForm = () => {
         <TextField
           id="outlined-basic"
           className="form-textfield"
-          label="First Name"
+          label={model?.errors.firstNameError ? "" : "First Name"}
           variant="outlined"
           margin="normal"
           name="firstName"
@@ -50,7 +53,7 @@ const SignupForm = () => {
 
         <TextField
           id="outlined-basic"
-          label="Last Name"
+          label={model?.errors.lastNameError ? "" : "Last Name"}
           variant="outlined"
           margin="normal"
           name="lastName"
@@ -76,7 +79,11 @@ const SignupForm = () => {
         />
         <TextField
           id="outlined-basic"
-          label="Email Address"
+          label={
+            model?.errors.emailError || model?.errors.emailInvalid
+              ? ""
+              : "Email Address"
+          }
           variant="outlined"
           margin="normal"
           name="email"
@@ -106,7 +113,7 @@ const SignupForm = () => {
         />
         <TextField
           id="outlined-basic"
-          label="Password"
+          label={model?.errors.passwordError ? "" : "Password"}
           variant="outlined"
           margin="normal"
           name="password"

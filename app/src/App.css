@@ -21,7 +21,7 @@
 @media (max-width: 767px) {
   .App-header {
     background-image: url("./assets/images/bg-intro-mobile.png");
-    padding: 0 30px;
+    padding: 35px;
     flex-direction: column;
   }
 }
