@@ -32,6 +32,7 @@ const SignupForm = () => {
           label={model?.errors.firstNameError ? "" : "First Name"}
           margin="normal"
           name="firstName"
+          sx={styles.textFieldStyle}
           onClick={() => model?.handleClearErrors("firstNameError")}
           error={model?.errors.firstNameError}
           helperText={
@@ -49,6 +50,7 @@ const SignupForm = () => {
           label={model?.errors.lastNameError ? "" : "Last Name"}
           margin="normal"
           name="lastName"
+          sx={styles.textFieldStyle}
           onClick={() => model?.handleClearErrors("lastNameError")}
           error={model?.errors.lastNameError}
           helperText={
@@ -69,6 +71,7 @@ const SignupForm = () => {
           }
           margin="normal"
           name="email"
+          sx={styles.textFieldStyle}
           onClick={() => model?.handleClearErrors("emailError")}
           error={model?.errors.emailError || model?.errors.emailInvalid}
           helperText={
@@ -89,6 +92,7 @@ const SignupForm = () => {
           label={model?.errors.passwordError ? "" : "Password"}
           margin="normal"
           name="password"
+          sx={styles.textFieldStyle}
           onClick={() => model?.handleClearErrors("passwordError")}
           error={model?.errors.passwordError}
           helperText={

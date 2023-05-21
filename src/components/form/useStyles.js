@@ -1,5 +1,11 @@
 export const useStyles = () => {
   return {
+    textFieldStyle: {
+      label: {
+        color: "#858587",
+        fontFamily: "poppins-regular",
+      },
+    },
     inputStyle: {
       fontSize: "16px",
       fontFamily: "poppins-regular",
