@@ -4,9 +4,9 @@ This project was built for signing up for subscription.
 
 # Viewing
 
-You can view a prototype of the app here [Click Me To Redirect](https://venerable-jelly-b73269.netlify.app/)\
+You can view a prototype of the app here [Click Me To Redirect](https://venerable-jelly-b73269.netlify.app/)
 
-Please dont click twice on the "try it for 7 days" button.
+### Please dont click twice on the "try it for 7 days" button.
 
 # Screenshots
 
