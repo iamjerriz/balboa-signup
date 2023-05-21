@@ -1,0 +1,20 @@
+.custom-button p {
+    font-family: 'poppins-regular', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+    text-transform: initial;
+}
+
+.custom-button span {
+    font-weight: 400;
+}
+
+/* Medai query */
+@media (max-width: 767px) {
+    .custom-button p {
+        padding: 0 30px;
+        font-size: 18px;
+    }
+}

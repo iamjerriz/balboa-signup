@@ -1,19 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import { Typography, Box, Button } from "@mui/material";
 import SignupForm from "../../components/form";
-import useViewModel from "./useViewModel";
 import CustomButton from "../../components/buttons";
 import "../../assets/styles/homepage.css";
 
 const Homepage = () => {
-  const model = useViewModel();
-
   const buttonStyle2 = {
     width: "100%",
     background: "#5d54a3",
-    margin: "20px 0",
+    marginBottom: "30px",
     padding: "15px 0",
+    boxShadow: "0px 10px 6px rgba(0, 0, 0, 0.2)",
   };
 
   return (
@@ -26,40 +23,33 @@ const Homepage = () => {
             watching others
           </p>
           <p className="left-description-text">
-            <span>
-              See how experienced developers solve problems in real-time.
-            </span>
-            <span>
-              Watching scripted tutorial is great, but understanding how
-            </span>
-            <span>developers think is invaluable</span>
+            See how experienced developers solve problems in real-time. Watching
+            scripted tutorial is great, but understanding how developers think
+            is invaluable
           </p>
         </div>
       </div>
 
       {/* RIGHT */}
-      <Box className="right-section">
+      <div className="right-section">
         <CustomButton
-          title={"Try it free 7 days then $20/mo. there after"}
+          title={
+            <p>
+              Try it free 7 days<span> then $20/mo. thereafter</span>
+            </p>
+          }
           buttonFunction={console.log("customButton")}
           style={buttonStyle2}
         />
 
-        <Box
-          sx={{
-            background: "white",
-            padding: "30px",
-            borderRadius: "15px",
-          }}
-        >
+        <div className="right-inner-box">
           <SignupForm dataOut={(e) => console.log(e)} />
-
-          <Typography sx={{ color: "black" }}>
-            By clicking the button, you are affreeing to our{" "}
-            <Typography>Terms and Services</Typography>
-          </Typography>
-        </Box>
-      </Box>
+          <p className="right-footer-text">
+            By clicking the button, you are aggreeing to our{" "}
+            <span className="right-footer-tandc">Terms and Services</span>
+          </p>
+        </div>
+      </div>
     </React.Fragment>
   );
 };

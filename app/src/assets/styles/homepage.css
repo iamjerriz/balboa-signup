@@ -1,8 +1,13 @@
+@font-face {
+    font-family: "poppins-regular";
+    src: url("../fonts/Poppins-Regular.ttf");
+  }
+
 /* left section */
 .left-section {
     width: 100%;
-    padding: 30px;
     align-items: center;
+    margin-right: 30px;
 }
 
 .left-inner-box {
@@ -11,9 +16,10 @@
 
 .left-header-text {
     text-align: left;
-    font-size: 65px;
+    font-size: 60px;
     font-weight: bolder;
     margin-bottom: 15px;
+    font-family: 'poppins-regular', sans-serif;
 }
 
 .left-description-text {
@@ -21,9 +27,51 @@
     flex-direction: column;
     text-align: left;
     font-size: 24px; 
+    font-family: 'poppins-regular', sans-serif;
+    max-width: 80%;
 }
   
 /* right section */
 .right-section {
-    width: 100%;
+    width: 80%;
 }
+
+.right-inner-box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.right-footer-text {
+    color: #dedde3;
+    font-family: 'poppins-regular', sans-serif;
+    font-weight: 600;
+}
+
+.right-footer-tandc {
+    color: #FF6666;
+}
+
+/* Medai query */
+@media (max-width: 767px) {
+/* left section */
+    .left-header-text {
+      font-size: 30px;
+      text-align: center
+    }
+    .left-description-text {
+        text-align: center;
+        font-size: 18px; 
+        max-width: 100%;
+    }
+
+/* right section */
+
+    .right-section {
+        width: 100%;
+    }
+
+    .right-footer-text {
+        font-size: 12px
+    }
+  }

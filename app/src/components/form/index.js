@@ -1,15 +1,18 @@
 // This is just an example
 
 import React from "react";
-import { FormGroup, TextField } from "@mui/material";
+import { FormGroup, TextField, InputAdornment } from "@mui/material";
 import useViewModel from "./useViewModel";
 import CustomButton from "../buttons";
+import errorIcon from "../../assets/images/icon-error.svg";
+import "../../assets/styles/form.css";
 
 const SignupForm = () => {
   const model = useViewModel();
+
   const buttonStyle1 = {
     width: "100%",
-    background: "#37cc8a",
+    background: "#38CC8C",
     margin: "20px 0",
     padding: "15px 0",
   };
@@ -19,6 +22,7 @@ const SignupForm = () => {
       <FormGroup>
         <TextField
           id="outlined-basic"
+          className="form-textfield"
           label="First Name"
           variant="outlined"
           margin="normal"
@@ -29,6 +33,19 @@ const SignupForm = () => {
             model?.errors.firstNameError ? "First name cannot be empty." : ""
           }
           onChange={model?.handleInputChange}
+          InputProps={{
+            style: {
+              fontSize: "16px",
+              fontFamily: "poppins-regular",
+            },
+            endAdornment: (
+              <InputAdornment position="start">
+                {model?.errors.firstNameError && (
+                  <img alt="error" src={errorIcon} />
+                )}
+              </InputAdornment>
+            ),
+          }}
         />
 
         <TextField
@@ -40,9 +57,22 @@ const SignupForm = () => {
           onClick={model?.handleClearErrors}
           error={model?.errors.lastNameError}
           helperText={
-            model?.errors.firstNameError ? "Last name cannot be empty." : ""
+            model?.errors.lastNameError ? "Last name cannot be empty." : ""
           }
           onChange={model?.handleInputChange}
+          InputProps={{
+            style: {
+              fontSize: "16px",
+              fontFamily: "poppins-regular",
+            },
+            endAdornment: (
+              <InputAdornment position="start">
+                {model?.errors.emailError && (
+                  <img alt="error" src={errorIcon} />
+                )}
+              </InputAdornment>
+            ),
+          }}
         />
         <TextField
           id="outlined-basic"
@@ -51,9 +81,28 @@ const SignupForm = () => {
           margin="normal"
           name="email"
           onClick={model?.handleClearErrors}
-          error={model?.errors.emailError}
-          helperText={model?.errors.emailError ? "Email cannot be empty." : ""}
+          error={model?.errors.emailError || model?.errors.emailInvalid}
+          helperText={
+            model?.errors.emailError
+              ? "Email cannot be empty."
+              : model?.errors.emailInvalid
+              ? "Looks like this is not an email"
+              : ""
+          }
           onChange={model?.handleInputChange}
+          InputProps={{
+            style: {
+              fontSize: "16px",
+              fontFamily: "poppins-regular",
+            },
+            endAdornment: (
+              <InputAdornment position="start">
+                {model?.errors.emailError && (
+                  <img alt="error" src={errorIcon} />
+                )}
+              </InputAdornment>
+            ),
+          }}
         />
         <TextField
           id="outlined-basic"
@@ -67,10 +116,23 @@ const SignupForm = () => {
             model?.errors.passwordError ? "Password cannot be empty." : ""
           }
           onChange={model?.handleInputChange}
+          InputProps={{
+            style: {
+              fontSize: "16px",
+              fontFamily: "poppins-regular",
+            },
+            endAdornment: (
+              <InputAdornment position="start">
+                {model?.errors.passwordError && (
+                  <img alt="error" src={errorIcon} />
+                )}
+              </InputAdornment>
+            ),
+          }}
         />
       </FormGroup>
       <CustomButton
-        title={"CLAIM YOUR FREE TRIAL"}
+        title={<p>CLAIM YOUR FREE TRIAL</p>}
         btnFunction={() => model?.handleSubmit()}
         style={buttonStyle1}
       />

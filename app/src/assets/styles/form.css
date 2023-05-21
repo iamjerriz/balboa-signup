@@ -1,0 +1,9 @@
+.MuiFormHelperText-root {
+    text-align: right!important;
+    font-size: 12px!important;
+    font-style: italic;
+}
+
+.form-textfield {
+    font-family: 'poppins-regular', sans-serif;
+}
