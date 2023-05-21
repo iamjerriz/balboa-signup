@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 
 const useViewModel = () => {
@@ -28,14 +27,12 @@ const useViewModel = () => {
   };
 
   //Handle Input Change
-  const handleInputChange = (e, a) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
     }));
-
-    console.log(formData);
   };
 
   // Validate Data

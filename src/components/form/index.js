@@ -3,10 +3,10 @@
 import React from "react";
 import { FormGroup, TextField, InputAdornment } from "@mui/material";
 import useViewModel from "./useViewModel";
-import CustomButton from "../buttons";
-import errorIcon from "../../assets/images/icon-error.svg";
-import "../../assets/styles/form.css";
+import errorIcon from "src/assets/images/icon-error.svg";
+import "src/assets/styles/form.css";
 import { useStyles } from "./useStyles";
+import CustomButton from "../buttons";
 
 const SignupForm = () => {
   const model = useViewModel();
@@ -57,7 +57,7 @@ const SignupForm = () => {
           onChange={model?.handleInputChange}
           InputProps={{
             style: styles.inputStyle,
-            endAdornment: <ErrorIcon name="lastName" />,
+            endAdornment: <ErrorIcon name="lastNameError" />,
           }}
         />
         <TextField
@@ -103,7 +103,7 @@ const SignupForm = () => {
       </FormGroup>
       <CustomButton
         title={<p>CLAIM YOUR FREE TRIAL</p>}
-        id="form-button"
+        id={"form-button"}
         btnFunction={() => model?.handleSubmit()}
         style={styles.buttonStyle}
       />

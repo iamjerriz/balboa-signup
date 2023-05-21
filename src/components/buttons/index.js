@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@mui/material";
-import "../../assets/styles/customButton.css";
+import "src/assets/styles/customButton.css";
 
 const CustomButton = ({ title, btnFunction, style, id }) => {
   return (

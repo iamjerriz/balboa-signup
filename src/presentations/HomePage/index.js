@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import CustomButton from "../../components/buttons";
-import "../../assets/styles/homepage.css";
+import "src/assets/styles/homepage.css";
 import { useStyles } from "./useStyles";
-import SignupForm from "../../components/form";
+import SignupForm from "src/components/form";
+import CustomButton from "src/components/buttons";
 
 const Homepage = () => {
   const styles = useStyles();
