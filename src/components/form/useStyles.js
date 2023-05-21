@@ -7,8 +7,8 @@ export const useStyles = () => {
     buttonStyle: {
       width: "100%",
       background: "#38CC8C",
-      margin: "20px 0",
-      padding: "15px 0",
+      margin: "15px 0",
+      padding: "10px 0",
       boxShadow: "0px 10px 6px rgba(0, 0, 0, 0.2)",
       "&:hover": {
         background: "#38CC8C",

@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# Balbo Signup
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was built for signing up for subscription.
+
+# Screenshots
+
+![App Screenshot](https://i.ibb.co/26C9WB5/sample.png[/img][/url])
 
 ## Available Scripts
 
