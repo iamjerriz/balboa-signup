@@ -1,12 +1,19 @@
 // This is just an example
 
 import React from "react";
-import { FormGroup, TextField, InputAdornment } from "@mui/material";
+import {
+  FormGroup,
+  TextField,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
 import useViewModel from "./useViewModel";
 import errorIcon from "src/assets/images/icon-error.svg";
 import "src/assets/styles/form.css";
 import { useStyles } from "./useStyles";
 import CustomButton from "../buttons";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const SignupForm = () => {
   const model = useViewModel();
@@ -92,6 +99,7 @@ const SignupForm = () => {
           label={model?.errors.passwordError ? "" : "Password"}
           margin="normal"
           name="password"
+          type={model?.showPassword ? "text" : "password"}
           sx={styles.textFieldStyle}
           onClick={() => model?.handleClearErrors("passwordError")}
           error={model?.errors.passwordError}
@@ -101,7 +109,19 @@ const SignupForm = () => {
           onChange={model?.handleInputChange}
           InputProps={{
             style: styles.inputStyle,
-            endAdornment: <ErrorIcon name="passwordError" />,
+            endAdornment: model?.errors.passwordError ? (
+              <ErrorIcon name="passwordError" />
+            ) : (
+              model?.formData.password.length > 0 && (
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={model?.handleClickShowPassword}
+                  edge="end"
+                >
+                  {model?.showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              )
+            ),
           }}
         />
       </FormGroup>

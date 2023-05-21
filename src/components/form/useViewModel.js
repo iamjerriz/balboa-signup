@@ -17,6 +17,10 @@ const useViewModel = () => {
     emailInvalid: false,
     passwordError: false,
   });
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () =>
+    setShowPassword((showPassword) => !showPassword);
 
   //Clear Errors
   const handleClearErrors = (name) => {
@@ -66,8 +70,10 @@ const useViewModel = () => {
     validateForm,
     handleClearErrors,
     handleSubmit,
+    handleClickShowPassword,
 
     errors,
+    showPassword,
     formData,
   };
 };
