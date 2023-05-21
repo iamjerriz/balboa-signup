@@ -34,7 +34,7 @@ const Homepage = () => {
             </p>
           }
           id={"ads-button"}
-          buttonFunction={console.log("customButton")}
+          btnFunction={() => console.log("customButton")}
           style={styles.buttonStyle}
         />
 
