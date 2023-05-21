@@ -1,5 +1,3 @@
-// This is just an example
-
 import React from "react";
 import {
   FormGroup,
