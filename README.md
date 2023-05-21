@@ -6,6 +6,11 @@ This project was built for signing up for subscription.
 
 ![App Screenshot](https://i.ibb.co/26C9WB5/sample.png[/img][/url])
 
+# Viewing
+
+You can view a prototype of the app here [Click Me To Redirect](https://venerable-jelly-b73269.netlify.app/)
+Please dont click twice on the "try it for 7 days" button.
+
 ## Available Scripts
 
 In the project directory, you can run:
