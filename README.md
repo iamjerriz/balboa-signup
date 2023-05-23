@@ -6,11 +6,93 @@ This project was built for signing up for subscription.
 
 You can view a prototype of the app here [Click Me To Redirect](https://venerable-jelly-b73269.netlify.app/)
 
-### Please dont click twice on the "try it for 7 days" button.
+### Note: Might not be the latest version.
 
 # Screenshots
 
 ![App Screenshot](https://i.ibb.co/26C9WB5/sample.png[/img][/url])
+
+# Developers Reference
+
+### CustomForm dataIn
+
+array of fields to display that contains the following properties.
+
+| name       | Required | Type      | Description                                                                               |
+| :--------- | :------- | :-------- | :---------------------------------------------------------------------------------------- |
+| `name`     | `Yes`    | `string`  | used in field label                                                                       |
+| `type`     | `Yes`    | `string`  | determined what type of input ex. email, password, string. mainly use for form validation |
+| `required` | `Yes`    | `boolean` | used in condition for form validation                                                     |
+| `modifier` | `Yes`    | `string`  | used as name for the value of form in state                                               |
+| `value`    | `Yes`    | `string`  | initial value                                                                             |
+
+### Usage/Examples
+
+```javascript
+import CustomForm from "CustomForm";
+
+const formSchema = [
+  {
+    name: "First Name",
+    type: "string",
+    required: true,
+    modifier: "firstName",
+    value: "",
+  },
+  {
+    name: "Last Name",
+    type: "string",
+    required: true,
+    modifier: "lastName",
+    value: "",
+  },
+  {
+    name: "Email Address",
+    type: "string",
+    required: true,
+    modifier: "email",
+    value: "",
+  },
+  {
+    name: "Password",
+    type: "string",
+    required: true,
+    modifier: "password",
+    value: "",
+  },
+];
+
+function App() {
+  return <CustomForm dataIn={formSchema} />;
+}
+```
+
+### CustomButton dataIn
+
+custom button that takes props that contains the following.
+
+| name          | Required | Type            | Description                   |
+| :------------ | :------- | :-------------- | :---------------------------- |
+| `title`       | `Yes`    | `string`        | use to display as button text |
+| `btnFunction` | `Yes`    | `function`      | button function to use        |
+| `style`       | `Yes`    | `CSSproperties` | custom button styling         |
+| `id`          | `Yes`    | `string`        | custom button ID              |
+
+### Usage/Examples
+
+```javascript
+import CustomButton from "CustomButton";
+
+function App() {
+  return;
+  <CustomButton
+    title={<p>CLAIM YOUR FREE TRIAL</p>}
+    id={"form-button"}
+    btnFunction={() => handleSubmit()}
+    style={styles.buttonStyle}
+  />;
+}
+```
 
 ## Available Scripts
 
@@ -61,6 +143,13 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 ## Dev dependencies
 
 - React
-- Node >= 16.0.0
 
 ## Changelogs
+
+#### version 1.1.0
+
+    -Added dataIn for form component
+    -Adjusted viewModel to cater flexibility of dataIn
+    -Converted form into mini app to make more reusable and scallable
+    -Added data schema for form DataIn in documentation(can read above)
+    -Overall adjustments

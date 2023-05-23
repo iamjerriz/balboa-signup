@@ -1,59 +1,78 @@
 import { useState } from "react";
 
-const useViewModel = () => {
+const useViewModel = (form) => {
+  //initial data
+  const field = form.map((field) => {
+    return field;
+  });
   //Store Data
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
-
+  const [formData, setFormData] = useState(field);
   //Store Errors
-  const [errors, setErrors] = useState({
-    firstNameError: false,
-    lastNameError: false,
-    emailError: false,
-    emailInvalid: false,
-    passwordError: false,
-  });
+  const [errors, setErrors] = useState({});
+  //Password State
   const [showPassword, setShowPassword] = useState(false);
-
-  const handleClickShowPassword = () =>
-    setShowPassword((showPassword) => !showPassword);
+  const handlePassIcon = () => setShowPassword((showPassword) => !showPassword);
 
   //Clear Errors
-  const handleClearErrors = (name) => {
-    if (name === "emailError") {
-      setErrors((s) => ({ ...s, emailInvalid: false }));
-    }
-    setErrors((s) => ({ ...s, [name]: false }));
+  const handleClearErrors = () => {
+    setErrors({});
   };
 
   //Handle Input Change
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+  const handleInputChange = (modifier, newValue) => {
+    setFormData((prevFormData) => {
+      const updatedFormData = prevFormData.map((field) => {
+        if (field.modifier === modifier) {
+          return { ...field, value: newValue };
+        }
+        return field;
+      });
+      return updatedFormData;
+    });
   };
 
   // Validate Data
   const validateForm = () => {
-    const { firstName, lastName, email, password } = formData;
-    const newErrors = {
-      firstNameError: firstName.trim() === "",
-      lastNameError: lastName.trim() === "",
-      emailError: email.trim() === "",
-      emailInvalid: !/\S+@\S+\.\S+/.test(email),
-      passwordError: password.trim() === "",
-    };
+    formData.map((field) => {
+      if (field.type === "string" && field.required) {
+        if (field.value.length <= 0) {
+          setErrors((s) => ({
+            ...s,
+            [field.modifier]: `${field.name} cannot be empty`,
+          }));
+        } else
+          setErrors((s) => ({
+            ...s,
+            [field.modifier]: true,
+          }));
+      } else if (field.type === "email" && field.required) {
+        const isEmailValid = !/\S+@\S+\.\S+/.test(field.value);
+        const isEmailEmpty = field.value.length <= 0;
+        if (isEmailEmpty)
+          setErrors((s) => ({
+            ...s,
+            [field.modifier]: `${field.name} cannot be empty`,
+          }));
+        if (!isEmailEmpty && isEmailValid)
+          setErrors((s) => ({
+            ...s,
+            [field.modifier]: "Looks like this is not an email",
+          }));
+        else if (!isEmailEmpty && !isEmailValid)
+          setErrors((s) => ({
+            ...s,
+            [field.modifier]: true,
+          }));
+      } else if (!field.required) {
+        setErrors((s) => ({ ...s, [field.modifier]: true }));
+      }
+      return console.log(errors);
+    });
+  };
 
-    const isValid = Object.values(newErrors).every((error) => !error);
-
-    setErrors(newErrors);
-    return isValid;
+  const hasError = (modifier) => {
+    if (modifier?.length > 0 && modifier !== true) return true;
+    else return false;
   };
 
   const handleSubmit = () => {
@@ -70,8 +89,9 @@ const useViewModel = () => {
     validateForm,
     handleClearErrors,
     handleSubmit,
-    handleClickShowPassword,
+    handlePassIcon,
 
+    hasError,
     errors,
     showPassword,
     formData,

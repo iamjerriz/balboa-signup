@@ -5,6 +5,37 @@ import SignupForm from "src/components/form";
 import CustomButton from "src/components/buttons";
 
 const Homepage = () => {
+  const formSchema = [
+    {
+      name: "First Name",
+      type: "string",
+      required: true,
+      modifier: "firstName",
+      value: "",
+    },
+    {
+      name: "Last Name",
+      type: "string",
+      required: true,
+      modifier: "lastName",
+      value: "",
+    },
+    {
+      name: "Email Address",
+      type: "string",
+      required: true,
+      modifier: "email",
+      value: "",
+    },
+    {
+      name: "Password",
+      type: "string",
+      required: true,
+      modifier: "password",
+      value: "",
+    },
+  ];
+
   const styles = useStyles();
 
   return (
@@ -38,7 +69,7 @@ const Homepage = () => {
         />
 
         <div className="right-inner-box">
-          <SignupForm dataOut={(e) => console.log(e)} />
+          <SignupForm dataIn={formSchema} />
           <p className="right-footer-text">
             By clicking the button, you are aggreeing to our{" "}
             <span className="right-footer-tandc">Terms and Services</span>
