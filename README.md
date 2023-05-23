@@ -1,4 +1,4 @@
-# Balbo Signup
+# Balboa Signup
 
 This project was built for signing up for subscription.
 
