@@ -76,7 +76,6 @@ const useViewModel = (form) => {
   };
 
   const handleSubmit = () => {
-    console.log(formData);
     if (validateForm()) {
       console.log("Form submitted:", formData);
     } else {
