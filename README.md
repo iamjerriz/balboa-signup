@@ -94,6 +94,58 @@ function App() {
 }
 ```
 
+# Coding Convention
+
+Please follow our standard convention
+
+## 📁 Folder Naming
+
+- Use only `kebab-case` + `lowercase` on `common` folder.
+- Use `PascalCase` on `presentations` and `components` folder.
+- Add `-v2` when creating another version of mini app component like <Form>.
+
+```
+src
+├── common
+|   ├── hooks
+|   ├── styles
+|   └── other-folder
+├── components
+|   ├── Button
+|   └── List
+└── presentations
+    ├── Cart
+    ├── Checkout
+    └── Checkout-v2
+```
+
+## 📄 File Naming
+
+- Use `camelCase` for types, redux, and other files mostly used in common folder.
+- Use `PascalCase` for presentations and components files.
+- Always start with word `use` on hooks files.
+
+```
+src
+├── assets
+|   ├── images
+|   ├── styles
+|   └── other-folder
+|       └── otherFiles
+├── components
+|   ├── Button
+|   |   └── index.ts
+|   |   └── useViewModel.ts
+|   |   └── useStyles.ts
+|   ├── Form
+|   |   └── index.ts
+|   |   └── useViewModel.ts
+|   |   └── useStyles.ts
+└── presentations
+    ├── HomePage
+    |   └── index.tsx
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
