@@ -104,21 +104,6 @@ Please follow our standard convention
 - Use `PascalCase` on `presentations` and `components` folder.
 - Add `-v2` when creating another version of mini app component like <Form>.
 
-```
-src
-├── common
-|   ├── hooks
-|   ├── styles
-|   └── other-folder
-├── components
-|   ├── Button
-|   └── List
-└── presentations
-    ├── Cart
-    ├── Checkout
-    └── Checkout-v2
-```
-
 ## 📄 File Naming
 
 - Use `camelCase` for types, redux, and other files mostly used in common folder.
